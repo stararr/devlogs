@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="./style.css" type="text/css">
+    </head>
+    <body>
+        <div id="hi">hi</div>
+        <div id="container">
+            <div class="post">
+                <h1>Responsive Tool Module</h1>
+                <p>17 November 2024</p>
+                <div class="bar">
+                    Tags:
+                    <div class="roblox button"></div>
+                    <div class="code button"></div>
+                </div>
+                <code>
+local anim1 = Instance.new("Animation")
+anim1.AnimationId = "rbxassetid://92385835844020"
+local anim2 = Instance.new("Animation")
+anim2.AnimationId = "rbxassetid://139070898394187"
+local anim3 = Instance.new("Animation")
+anim3.AnimationId = "rbxassetid://125044346725278"
+
+local plr = game.Players.LocalPlayer
+local char = plr.Character or plr.CharacterAdded:Wait()
+local hum = char:WaitForChild("Humanoid")
+local animator = hum:WaitForChild("Animator")
+local hrp = char:WaitForChild("HumanoidRootPart")
+local event = game.ReplicatedStorage:WaitForChild("Events"):WaitForChild("Cutscene")
+function FirstCutscene()
+    task.wait(1)
+    hrp.Anchored = true
+    hrp.CFrame = CFrame.new(Vector3.new(13.825, 5, -42.925))*CFrame.Angles(math.rad(0), math.rad(180), math.rad(0))
+    print("woo")
+    local track1 = animator:LoadAnimation(anim1)
+    local track2 = animator:LoadAnimation(anim2)
+    local track3 = animator:LoadAnimation(anim3)
+    event:FireServer(true)
+    track1:Play()
+    track1.Stopped:Wait()
+    track2.Looped = true
+    track2:Play()
+    task.wait(5)
+    track2:Stop()
+    track3:Play()
+    track3.Stopped:Wait()
+    event:FireServer(false)
+    hrp.Anchored = false
+end
+
+FirstCutscene()
+                </code>
+            </div>
+        </div>
+    </body>
+    <script src="./test.js" type="text/javascript"></script>
+</html>
