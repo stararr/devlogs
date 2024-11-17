@@ -5,3 +5,5 @@ for (code of document.getElementsByTagName("code")) {
 
 /*padding: 0 2rem;
 border: none;*/
+
+navigator.clipboard.writeText("")
