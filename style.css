@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=DynaPuff&family=Indie+Flower&family=Pixelify+Sans:wght@400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DynaPuff&family=Gaegu&family=Indie+Flower&family=Pixelify+Sans:wght@400..700&display=swap');
 
 body {
     background-color: lightgrey;
@@ -11,7 +11,7 @@ body {
 :root {
     font-size: 14px;
     --transparent: #00000000;
-    --star-color: #a1c8ed;
+    --star-color: #b7cfe5;
     --star-dark: #6e8ab3;
     --star-darker: #4a5d78;
 }
@@ -37,13 +37,22 @@ body {
     overflow: hidden;
 }
 
+h1, p.date {
+    font-family: "DynaPuff";
+}
+
 h1 {
     font-size: 2.5rem;
     color: var(--star-darker);
 }
 
-p {
+p.date {
     font-size: 2rem;
+    color: var(--star-color);
+}
+
+p {
+    font-size: 1.5rem;
     color: var(--star-dark);
 }
 
@@ -60,11 +69,6 @@ code {
     padding 0.25s ease-out;
     overflow: hidden;
     white-space: pre-wrap;
-}
-
-code:hover {
-    padding: 0 2rem;
-    border: none;
 }
 
 span.function {
@@ -86,7 +90,7 @@ span.function {
 .button {
     display: inline-block;
     width: 1.25rem;
-    height: 1rem;
+    height: 1.25rem;
     background-color: #a1c8ed;
     border-radius: 25%;
     border: 0.125rem solid var(--star-dark);
@@ -101,4 +105,15 @@ span.function {
 
 .minecraft {
     background-image: url("https://media.minecraftforum.net/avatars/0/1/635356669593325566.png");
+}
+
+video {
+    border-radius: 1.25rem;
+    height: 25rem;
+}
+
+div.videorow {
+    display: flex;
+    column-gap: 0.5rem;
+    justify-content: center;
 }
