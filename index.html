@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <script src="https://kit.fontawesome.com/fdb7ea0232.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="./style.css" type="text/css">
     </head>
     <body>
-        <div id="hi">hi</div>
+        <div id="copynotif"><span class="fa-regular fa-clipboard"></span>Copied!</div>
         <div id="container">
             <div class="post">
                 <h1>Responsive Tool Module</h1>
@@ -19,9 +20,9 @@
                     <video src="./videos/toolmodulevid1.mp4" controls></video>
                     <video src="./videos/toolmodulevid2.mp4" controls></video>
                 </div>
-                <3 class="star">hi</span>
+                <button onclick="toggleCode(this)" style="display: block;">asdaddsd</button>
                 <code>
-local anim1 = Instance.new("Animation")
+<span class="clipboard fa-regular fa-clipboard"></span>local anim1 = Instance.new("Animation")
 anim1.AnimationId = "rbxassetid://92385835844020"
 local anim2 = Instance.new("Animation")
 anim2.AnimationId = "rbxassetid://139070898394187"
@@ -62,3 +63,36 @@ FirstCutscene()
     </body>
     <script src="./test.js" type="text/javascript"></script>
 </html>
+
+local tooltips = {}
+local mouse = game.Players.LocalPlayer:GetMouse()
+local tooltipactive = false
+local paddingl = script.Parent:WaitForChild("UIPadding").PaddingLeft.Offset
+local paddingr = script.Parent:WaitForChild("UIPadding").PaddingRight.Offset
+
+for _, guiitem in pairs(game.Players.LocalPlayer.PlayerGui:GetDescendants()) do
+	if guiitem:GetAttribute("ToolTip") then
+		guiitem.MouseEnter:Connect(function()
+			if #tooltips==0 then
+				script.Parent.Visible = true
+			end
+			if not (table.find(tooltips, guiitem)) then
+				table.insert(tooltips, guiitem)
+			end
+			script.Parent.Text = guiitem:GetAttribute("ToolTip")
+			script.Parent.Position = UDim2.new(0, mouse.X, 0, mouse.Y-12)
+			script.Parent.Size = UDim2.new(0, script.Parent.TextBounds.X+paddingl+paddingr, 0, 18)
+		end)
+		guiitem.MouseMoved:Connect(function()
+			if #tooltips~=0 then
+				script.Parent.Position = UDim2.new(0, mouse.X, 0, mouse.Y-12)
+			end
+		end)
+		guiitem.MouseLeave:Connect(function()
+			table.remove(tooltips, table.find(tooltips, guiitem))
+			if #tooltips==0 then
+				script.Parent.Visible = false
+			end
+		end)
+	end
+end
