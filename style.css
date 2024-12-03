@@ -10,13 +10,12 @@ body {
 
 #copynotif{
     position: fixed;
-    padding: 0.25rem;
+    padding: 1rem 1.25rem;
     color: white;
     text-align: center;
     background-color: rgba(74, 93, 120, 0.75);
     font-size: 1.75rem;
-    border-radius: 1.75rem;
-    width: 12.5rem;
+    border-radius: 2rem;
     top: 2.5rem;
     left: 50%;
     margin-left: -2.5rem;

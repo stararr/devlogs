@@ -8,6 +8,58 @@
         <div id="copynotif"><span class="fa-regular fa-clipboard"></span>Copied!</div>
         <div id="container">
             <div class="post">
+                <h1>Tooltips!</h1>
+                <p class="date">2 December 2024</p>
+                <div class="bar">
+                    Tags:
+                    <span class="roblox button"></span>
+                    <span class="code button">&lt;/&gt;</span>
+                </div>
+                <p>Well, the last post left off on a cliffhanger...</p>
+                <p>Anyways, here's the development videos for the tooltips in our upcoming RPG game!!</p>
+                <p>Yes, I know Michael and June are the only ones reading this. Hi guys!</p>
+                <video src="./videos/tooltips/first.mp4" controls></video>
+                <video src="./videos/tooltips/second.mp4" controls></video>
+                <video src="./videos/tooltips/third.mp4" controls></video>
+                <video src="./videos/tooltips/fourth.mp4" controls></video>
+                <video src="./videos/tooltips/fifth.mp4" controls></video>
+                <button onclick="toggleCode(this)" style="display: block;">asdaddsd</button>
+                <code>
+<span class="clipboard fa-regular fa-clipboard"></span>local tooltips = {}
+local mouse = game.Players.LocalPlayer:GetMouse()
+local tooltipactive = false
+local paddingl = script.Parent:WaitForChild("UIPadding").PaddingLeft.Offset
+local paddingr = script.Parent:WaitForChild("UIPadding").PaddingRight.Offset
+
+for _, guiitem in pairs(game.Players.LocalPlayer.PlayerGui:GetDescendants()) do
+    if guiitem:GetAttribute("ToolTip") then
+        guiitem.MouseEnter:Connect(function()
+            if #tooltips==0 then
+                script.Parent.Visible = true
+            end
+            if not (table.find(tooltips, guiitem)) then
+                table.insert(tooltips, guiitem)
+            end
+            script.Parent.Text = guiitem:GetAttribute("ToolTip")
+            script.Parent.Position = UDim2.new(0, mouse.X, 0, mouse.Y-12)
+            script.Parent.Size = UDim2.new(0, script.Parent.TextBounds.X+paddingl+paddingr, 0, 18)
+        end)
+        guiitem.MouseMoved:Connect(function()
+            if #tooltips~=0 then
+                script.Parent.Position = UDim2.new(0, mouse.X, 0, mouse.Y-12)
+            end
+        end)
+        guiitem.MouseLeave:Connect(function()
+            table.remove(tooltips, table.find(tooltips, guiitem))
+            if #tooltips==0 then
+                script.Parent.Visible = false
+            end
+        end)
+    end
+end
+                </code>
+            </div>
+            <div class="post">
                 <h1>Responsive Tool Module</h1>
                 <p class="date">17 November 2024</p>
                 <div class="bar">
@@ -63,36 +115,3 @@ FirstCutscene()
     </body>
     <script src="./test.js" type="text/javascript"></script>
 </html>
-
-local tooltips = {}
-local mouse = game.Players.LocalPlayer:GetMouse()
-local tooltipactive = false
-local paddingl = script.Parent:WaitForChild("UIPadding").PaddingLeft.Offset
-local paddingr = script.Parent:WaitForChild("UIPadding").PaddingRight.Offset
-
-for _, guiitem in pairs(game.Players.LocalPlayer.PlayerGui:GetDescendants()) do
-	if guiitem:GetAttribute("ToolTip") then
-		guiitem.MouseEnter:Connect(function()
-			if #tooltips==0 then
-				script.Parent.Visible = true
-			end
-			if not (table.find(tooltips, guiitem)) then
-				table.insert(tooltips, guiitem)
-			end
-			script.Parent.Text = guiitem:GetAttribute("ToolTip")
-			script.Parent.Position = UDim2.new(0, mouse.X, 0, mouse.Y-12)
-			script.Parent.Size = UDim2.new(0, script.Parent.TextBounds.X+paddingl+paddingr, 0, 18)
-		end)
-		guiitem.MouseMoved:Connect(function()
-			if #tooltips~=0 then
-				script.Parent.Position = UDim2.new(0, mouse.X, 0, mouse.Y-12)
-			end
-		end)
-		guiitem.MouseLeave:Connect(function()
-			table.remove(tooltips, table.find(tooltips, guiitem))
-			if #tooltips==0 then
-				script.Parent.Visible = false
-			end
-		end)
-	end
-end

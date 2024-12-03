@@ -28,7 +28,7 @@ function toggleCode(button) {
 }
 
 var copynotif = elem("copynotif")
-for (clipboard of document.getElementsByClassName("clipboard")) {
+Array.from(document.getElementsByClassName("clipboard")).forEach(clipboard => {
     clipboard.addEventListener("click", function(e) {
         console.log('clicked')
         navigator.clipboard.writeText(clipboard.parentElement.innerText)
@@ -37,4 +37,4 @@ for (clipboard of document.getElementsByClassName("clipboard")) {
             copynotif.style.filter = "opacity(0)"
         }, 1250);
     })
-}
+})
