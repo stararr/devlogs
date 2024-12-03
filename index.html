@@ -17,12 +17,24 @@
                 </div>
                 <p>Well, the last post left off on a cliffhanger...</p>
                 <p>Anyways, here's the development videos for the tooltips in our upcoming RPG game!!</p>
-                <p>Yes, I know Michael and June are the only ones reading this. Hi guys!</p>
-                <video src="./videos/tooltips/first.mp4" controls></video>
-                <video src="./videos/tooltips/second.mp4" controls></video>
-                <video src="./videos/tooltips/third.mp4" controls></video>
-                <video src="./videos/tooltips/fourth.mp4" controls></video>
-                <video src="./videos/tooltips/fifth.mp4" controls></video>
+                <p>Yes, I know Michael and June are the only ones reading this.</p>
+                <p>Hi guys!</p>
+                <div class="videocol" style="width: 75%;">
+                    <video src="./videos/tooltips/first.mp4" controls></video>
+                    <p>This is the first version! It was kinda broken, as you can see.</p>
+                    <hr>
+                    <video src="./videos/tooltips/second.mp4" controls></video>
+                    <p>This is the second version! It was no longer broken, but I also had't implemented the movement or automatic size yet.</p>
+                    <hr>
+                    <video src="./videos/tooltips/third.mp4" controls></video>
+                    <p>This is the third version! The movement was directly relative to the cursor's position, which made it hard to read. In addition to that, I accidentally typed the "mouse.X" in the <i>XSize</i> part of the UDim2 instead of the <i>XOffset</i>...</p>
+                    <hr>
+                    <video src="./videos/tooltips/fourth.mp4" controls></video>
+                    <p>This is the fourth edition! It had a few cases in which it broke down, and the padding was too little, too.</p>
+                    <hr>
+                    <video src="./videos/tooltips/fifth.mp4" controls></video>
+                    <p>This is the fifth and current edition! Isn't it beautiful?</p>
+                </div>
                 <button onclick="toggleCode(this)" style="display: block;">asdaddsd</button>
                 <code>
 <span class="clipboard fa-regular fa-clipboard"></span>local tooltips = {}

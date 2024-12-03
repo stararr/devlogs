@@ -164,6 +164,18 @@ div.videorow {
     justify-content: center;
 }
 
+div.videocol {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.5rem;
+    justify-content: center;
+    justify-self: center;
+}
+
+div.videocol > video {
+    flex: 0;
+}
+
 @keyframes spin {
     0% {
         transform: rotate(0deg);
