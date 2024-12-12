@@ -172,6 +172,14 @@ div.videocol {
     justify-self: center;
 }
 
+:root {
+    --var: color-mix(
+        in oklab,
+        hsl(var(--brand-500-hsl) / 0.15) 100%,
+        hsl(var(--theme-base-color-hsl, 0 0% 0%) / 0.15) var(--theme-base-color-amount, 0%)
+    )
+}
+
 div.videocol > video {
     flex: 0;
 }
@@ -215,4 +223,16 @@ code > span.clipboard {
     position: absolute;
     top: 2.5rem;
     right: 2.5rem;
+}
+
+.discord {
+    padding: 0.25rem;
+    text-decoration: none;
+    background-color: rgba(71, 81, 196, 0.75);
+    border-radius: 5px;
+    color: #C5C9F7;
+}
+
+.channel::before {
+    content: "#";
 }

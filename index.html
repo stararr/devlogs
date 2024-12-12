@@ -8,6 +8,85 @@
         <div id="copynotif"><span class="fa-regular fa-clipboard"></span>Copied!</div>
         <div id="container">
             <div class="post">
+                <h1>Menu for RPG</h1>
+                <p class="date">12 December 2024</p>
+                <div class="bar">
+                    Tags:
+                    <span class="roblox button"></span>
+                    <span class="code button">&lt;/&gt;</span>
+                </div>
+                <p>Discord won't let me post the video in <a class="discord channel" href="https://discord.com/channels/1173587421779214336/1312796526010961991">rpg-exclamation-point</a> so it's here now!</p>
+                <p>I hope you guys like it!</p>
+                <div class="videocol" style="width: 75%">
+                    <video controls src="./videos/menu.mp4"></video>
+                </div>
+                <button onclick="toggleCode(this)" style="display: block;">asdaddsd</button>
+                <code>
+<span class="clipboard fa-regular fa-clipboard"></span>local scrollingframe = script.Parent
+local menuframe = scrollingframe.Parent
+local gui = menuframe.Parent
+local headerframe = menuframe:WaitForChild("HeaderFrame")
+local headerlabel = menuframe:WaitForChild("HeaderFrame"):WaitForChild("HeaderLabel")
+local footerframe = menuframe:WaitForChild("FooterFrame")
+
+local headertgns = NumberSequence.new({NumberSequenceKeypoint.new(0, 0), NumberSequenceKeypoint.new(0.5, 0), NumberSequenceKeypoint.new(1, 1)})
+local footertgns = NumberSequence.new({NumberSequenceKeypoint.new(0, 1), NumberSequenceKeypoint.new(1, 0)})
+
+local ts = game:GetService("TweenService")
+
+local headerappear1 = ts:Create(headerframe, TweenInfo.new(0.25), {BackgroundTransparency=0})
+local headerappear2 = ts:Create(headerlabel, TweenInfo.new(0.25), {BackgroundTransparency=1})
+local headerdisappear1 = ts:Create(headerframe, TweenInfo.new(0.25), {BackgroundTransparency=1})
+local headerdisappear2 = ts:Create(headerlabel, TweenInfo.new(0.25), {BackgroundTransparency=0})
+local footerappear = ts:Create(footerframe, TweenInfo.new(0.25), {BackgroundTransparency=0})
+local footerdisappear = ts:Create(footerframe, TweenInfo.new(0.25), {BackgroundTransparency=1})
+
+local header = false
+local footer = true
+
+scrollingframe.Changed:Connect(function(property: string)
+	if property=="CanvasPosition" then
+		if scrollingframe.CanvasPosition.Y==0 and header then
+			headerdisappear1:Play()
+			headerdisappear2:Play()
+			header = false
+		elseif scrollingframe.CanvasPosition.Y~=0 and not header then
+			headerappear1:Play()
+			headerappear2:Play()
+			header = true
+		end
+		if scrollingframe.AbsoluteCanvasSize.Y-scrollingframe.CanvasPosition.Y==scrollingframe.AbsoluteWindowSize.Y then
+			if footer then
+				footerdisappear:Play()
+				footer = false
+			end
+		else
+			if not footer then
+				footerappear:Play()
+				footer = true
+			end
+		end
+	end
+end)
+                </code>
+                <code>
+<span class="clipboard fa-regular fa-clipboard"></span>local gui = script.Parent
+local frame = gui:WaitForChild("MenuFrame")
+local gradient = frame:WaitForChild("MovingColors"):WaitForChild("Gradient")
+
+gui.Changed:Connect(function(property)
+	if property=="Enabled" and gui.Enabled then
+		while gui.Enabled do
+			if gradient.Rotation==180 then gradient.Rotation = 0
+			else gradient.Rotation+=1 end
+			task.wait(--[[0.125]])
+		end
+	end
+end)
+gui.Enabled = true
+                </code>
+            </div>
+            <div class="post">
                 <h1>Tooltips!</h1>
                 <p class="date">2 December 2024</p>
                 <div class="bar">
